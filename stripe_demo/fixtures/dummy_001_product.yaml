@@ -2,30 +2,30 @@ App\Entity\Product:
     product1:
         name: 'Phone'
         description: 'A mobile phone to keep in contact.'
-        price: 199.99
-        image: /images/product1.jpg
+        price: 399.99
+        image: /build/images/product1.jpg
     product2:
         name: 'Computer'
         description: 'A laptop computer to develop some cool apps.'
         price: 1099.99
-        image: /images/product2.jpg
+        image: /build/images/product2.jpg
     product3:
         name: 'Headset'
         description: 'A simple headset to hear music.'
         price: 49.05
-        image: /images/product3.jpg
+        image: /build/images/product3.jpg
     product4:
         name: 'Hoddie'
         description: 'A hoddie to handle server room temperatures.'
-        price: 49.05
-        image: /images/product4.jpg
+        price: 35.99
+        image: /build/images/product4.jpg
     product5:
         name: 'Smartwatch'
         description: 'A watch with some smart capabilites.'
-        price: 49.05
-        image: /images/product5.jpg
+        price: 90.50
+        image: /build/images/product5.jpg
     product6:
-        name: 'Headset'
-        description: 'A simple headset'
-        price: 49.05
-        image: /images/product6.jpg
+        name: 'Desktop Chair'
+        description: 'A confortable desktop chair.'
+        price: 299.99
+        image: /build/images/product6.jpg
