@@ -25,3 +25,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    product_repository:
+        class: App\Repository\ProductRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - App:Product
+
+    App\Manager\ProductManager:
+        arguments: ['@product_repository']
