@@ -20,6 +20,8 @@ services:
     image: 'bitnami/mariadb:10.3'
     ports:
       - '3306:13306'
+    volumes:
+      - ./mariadb_volume:/bitnami/mariadb
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=stripe_demo

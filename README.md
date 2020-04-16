@@ -37,5 +37,6 @@ yarn encore dev
 
 To fill the database with dummy product data for demo purposes execute:
 ```
+docker-compose run myapp php stripe_demo/bin/console doctrine:schema:update --force
 docker-compose run myapp php stripe_demo/bin/console hautelook:fixtures:load
 ```
