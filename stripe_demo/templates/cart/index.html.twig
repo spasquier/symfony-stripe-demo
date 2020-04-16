@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="album py-5 bg-light">
+<div class="container">
+    <h1>Shopping Cart</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if products is empty %}
+            <tr>
+                <th colspan="5">Your cart is empty for now.</th>
+            </tr>
+            <tr>
+                <th colspan="5" class="text-right"><a href="/" class="btn btn-primary">Keep Shopping</a></th>
+            </tr>
+        {% else %}
+            {% for product in products %}
+            <tr>
+                <th>{{ product.name }}</th>
+                <td>{{ product.price }}</td>
+                <td>{{ quantities[product.id] }}</td>
+                <td>${{ product.price * quantities[product.id] }}</td>
+                <td><a href="/cart/products/remove/{{ product.id }}" class="btn btn-sm btn-outline-secondary">Remove</a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="4" class="text-right">Grand Total</th>
+                <th>${{ total }}</th>
+            </tr>
+            <tr>
+                <th colspan="5" class="text-right">
+                    <a href="/" class="btn btn-secondary">Keep Shopping</a>
+                    <a href="/cart/checkout" class="btn btn-primary">Checkout</a>
+                </th>
+            </tr>
+        {% endif %}
+    </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
