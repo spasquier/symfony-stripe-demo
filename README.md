@@ -2,7 +2,7 @@
 
 This is a simple Symfony 5 app that test shows how to integrate a website with Stripe payments Gateway.
 
-It has a simple product listing/detail page, a shopping cart, and a checkout form integrated with Stripe.
+It has a simple product listing page, a shopping cart, and a checkout form integrated with Stripe.
 
 ## Configuration
 
@@ -31,9 +31,10 @@ https://localhost:8000/
 To copy assets (images) to public folder execute the following commands
 (install yarn before executing this if you don't have it on your system):
 ```
+cd symfony-stripe-demo/stripe_demo
 yarn install
 yarn encore dev
-```` 
+````
 
 To fill the database with dummy product data for demo purposes execute:
 ```
