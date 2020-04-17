@@ -13,22 +13,22 @@ class CheckoutController extends AbstractController
     use CartTotalTrait;
 
     /**
-     * @var ProductManager $productManager
+     * @var ProductManager
      */
     private $productManager;
 
     /**
-     * @var SessionInterface $session
+     * @var SessionInterface
      */
     private $session;
 
     /**
-     * @var StripePaymentService $stripePaymentService
+     * @var StripePaymentService
      */
     private $stripePaymentService;
 
     /**
-     * @var string $stripeApiKey
+     * @var string
      */
     private $stripeApiKey;
 
@@ -55,7 +55,7 @@ class CheckoutController extends AbstractController
             'quantities' => $quantities,
             'total' => $total,
             'payment_intent' => $paymentIntent,
-            'stripe_api_key' => $this->stripeApiKey
+            'stripe_api_key' => $this->stripeApiKey,
         ]);
     }
 

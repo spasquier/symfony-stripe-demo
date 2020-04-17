@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @var ProductManager $productManager
+     * @var ProductManager
      */
     private $productManager;
 

@@ -14,12 +14,12 @@ class CartController extends AbstractController
     use CartTotalTrait;
 
     /**
-     * @var ProductManager $productManager
+     * @var ProductManager
      */
     private $productManager;
 
     /**
-     * @var SessionInterface $session
+     * @var SessionInterface
      */
     private $session;
 
@@ -41,7 +41,7 @@ class CartController extends AbstractController
         return $this->render('cart/index.html.twig', [
             'products' => $products,
             'quantities' => $quantities,
-            'total' => $total
+            'total' => $total,
         ]);
     }
 
@@ -63,11 +63,11 @@ class CartController extends AbstractController
             $quantities = [];
         }
 
-        $productExistsInCart = $products->exists(function($key, $element) use($product) {
+        $productExistsInCart = $products->exists(function ($key, $element) use ($product) {
             return $element->getId() == $product->getId();
         });
         if ($productExistsInCart) {
-            $quantities[$product->getId()] += 1;
+            ++$quantities[$product->getId()];
         } else {
             $products->set($product->getId(), $product);
             $quantities[$product->getId()] = 1;
@@ -93,7 +93,7 @@ class CartController extends AbstractController
 
         if (isset($quantities[$product->getId()])) {
             if ($quantities[$product->getId()] > 1) {
-                $quantities[$product->getId()] -= 1;
+                --$quantities[$product->getId()];
             } else {
                 $products->remove($product->getId());
                 unset($quantities[$product->getId()]);
