@@ -22,13 +22,17 @@ STRIPE_API_KEY=...
 STRIPE_API_SECRET=...
 ```
 
+Execute these commands to compile and copy assets to the public directory:
+```
+cd symfony-stripe-demo/stripe_demo
+yarn install
+yarn encore dev
+````
+
 ## Docker Setup
-This app uses Docker to setup the development environment,
-specifically it uses a Bitnami image.
+This app uses Docker to setup the development environment, specifically it uses a Bitnami image.
 
-See docs for the Docker image here:
-
-https://hub.docker.com/r/bitnami/symfony
+See Docker image docs here: https://hub.docker.com/r/bitnami/symfony
 
 To build the app execute the following commands:
 ```
@@ -36,15 +40,7 @@ cd symfony-stripe-demo
 docker-compose up
 ```
 
-To copy compile and copy assets to public directory execute the following commands
-(you need `yarn` installed on your host OS):
-```
-cd symfony-stripe-demo/stripe_demo
-yarn install
-yarn encore dev
-````
-
-To fill the database with dummy data execute the following commands:
+To fill the database with dummy products data execute the following commands:
 ```
 docker-compose run myapp php stripe_demo/bin/console doctrine:schema:update --force
 docker-compose run myapp php stripe_demo/bin/console hautelook:fixtures:load
