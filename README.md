@@ -5,17 +5,11 @@ It has a simple product listing page, a shopping cart and a checkout form integr
 
 This Stripe integration was done following these docs: https://stripe.com/docs/payments/accept-a-payment
 
-1. The Stripe related server side code is here:
+1. The Stripe related server side code is here: [stripe_demo/src/Service/StripePaymentService.php](stripe_demo/src/Service/StripePaymentService.php)
 
-[stripe_demo/src/Service/StripePaymentService.php](stripe_demo/src/Service/StripePaymentService.php)
+2. The client side markup that contains Stripe HTML elements is here: [stripe_demo/templates/cart/checkout.html.twig](stripe_demo/templates/cart/checkout.html.twig)
 
-2. The client side markup that contains Stripe HTML elements is here:
-
-[stripe_demo/templates/cart/checkout.html.twig](stripe_demo/templates/cart/checkout.html.twig)
-
-3. The client side code that handles Stripe payment submit logic is here:
-
-[stripe_demo/assets/js/app.js](stripe_demo/assets/js/app.js)
+3. The client side code that handles Stripe payment submit logic is here: [stripe_demo/assets/js/app.js](stripe_demo/assets/js/app.js)
 
 ## Configuration
 This app requires a test key and secret to use the Stripe API.
