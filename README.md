@@ -1,19 +1,23 @@
 # Symfony 5 + Stripe
-This is a simple Symfony 5 app that test shows how to integrate a PHP website with Stripe payments Gateway.
+This is a simple Symfony 5 app that test shows how to integrate a PHP website with Stripe.
 
 It has a simple product listing page, a shopping cart and a checkout form integrated with Stripe.
 
-The Stripe integration was done following these docs:
+This Stripe integration was done following these docs:
+
 https://stripe.com/docs/payments/accept-a-payment
 
-The class that implements the server side logic is here:
-stripe_demo/src/Service/StripePaymentService.php
+The Stripe related server side code is here:
+
+[stripe_demo/src/Service/StripePaymentService.php](stripe_demo/src/Service/StripePaymentService.php)
 
 The client side markup that contains Stripe HTML elements is here:
-stripe_demo/templates/cart/checkout.html.twig
+
+[stripe_demo/templates/cart/checkout.html.twig](stripe_demo/templates/cart/checkout.html.twig)
 
 The client side code that handles Stripe payment submit logic is here:
-stripe_demo/assets/js/app.js
+
+[stripe_demo/assets/js/app.js](stripe_demo/assets/js/app.js)
 
 ## Configuration
 This app requires a test key and secret to use the Stripe API.
@@ -28,7 +32,10 @@ STRIPE_API_SECRET=...
 
 ## Docker Setup
 This app uses Docker to setup the development environment,
-specifically it uses a Bitnami image. See docs for the Docker image here:
+specifically it uses a Bitnami image.
+
+See docs for the Docker image here:
+
 https://hub.docker.com/r/bitnami/symfony
 
 To build the app execute the following commands:
@@ -37,8 +44,8 @@ cd symfony-stripe-demo
 docker-compose up
 ```
 
-To copy dummy product images to public folder and build app js files
-execute the following commands (having `yarn` installed on your system is required):
+To copy compile and copy assets to public directory execute the following commands
+(you need `yarn` installed on your host OS):
 ```
 cd symfony-stripe-demo/stripe_demo
 yarn install
@@ -52,10 +59,12 @@ docker-compose run myapp php stripe_demo/bin/console hautelook:fixtures:load
 ```
 
 ## Running the app
-*You can access the demo website on your browser here:*
+**You can access the demo website on your browser here:**
+
 https://localhost:8000/
 
 You can use the following credit cards on the Checkout form:
+
 https://stripe.com/docs/payments/accept-a-payment#web-test-integration
 
 Feel free to test your Stripe integration as much as you want,
