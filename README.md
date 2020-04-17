@@ -22,9 +22,10 @@ STRIPE_API_KEY=...
 STRIPE_API_SECRET=...
 ```
 
-Execute these commands to compile and copy assets to the public directory:
+Execute these commands to get dependencies and compile web assets:
 ```
 cd symfony-stripe-demo/stripe_demo
+composer install
 yarn install
 yarn encore dev
 ````
