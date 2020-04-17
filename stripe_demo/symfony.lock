@@ -150,6 +150,9 @@
     "sebastian/recursion-context": {
         "version": "4.0.0"
     },
+    "stripe/stripe-php": {
+        "version": "v7.28.1"
+    },
     "symfony/asset": {
         "version": "v5.0.7"
     },

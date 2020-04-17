@@ -3,6 +3,7 @@
 namespace App\Controller\Cart;
 
 use App\Manager\ProductManager;
+use App\Service\StripePaymentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,10 +22,22 @@ class CheckoutController extends AbstractController
      */
     private $session;
 
-    public function __construct(ProductManager $productManager, SessionInterface $session)
+    /**
+     * @var StripePaymentService $stripePaymentService
+     */
+    private $stripePaymentService;
+
+    /**
+     * @var string $stripeApiKey
+     */
+    private $stripeApiKey;
+
+    public function __construct(ProductManager $productManager, SessionInterface $session, StripePaymentService $stripePaymentService)
     {
         $this->productManager = $productManager;
         $this->session = $session;
+        $this->stripePaymentService = $stripePaymentService;
+        $this->stripeApiKey = $_ENV['STRIPE_API_KEY'];
     }
 
     /**
@@ -35,20 +48,15 @@ class CheckoutController extends AbstractController
         $products = $this->session->get('cart_products');
         $quantities = $this->session->get('cart_quantities');
         $total = $this->getCartTotal($products, $quantities);
+        $paymentIntent = $this->stripePaymentService->createPaymentIntent($total);
 
         return $this->render('cart/checkout.html.twig', [
             'products' => $products,
             'quantities' => $quantities,
             'total' => $total,
+            'payment_intent' => $paymentIntent,
+            'stripe_api_key' => $this->stripeApiKey
         ]);
-    }
-
-    /**
-     * @Route("/cart/checkout/stripe/connect", methods={"POST"})
-     */
-    public function stripeConnectAction()
-    {
-        return $this->redirect('/cart/checkout/success');
     }
 
     /**
@@ -56,14 +64,9 @@ class CheckoutController extends AbstractController
      */
     public function successAction()
     {
-        $products = $this->session->get('cart_products');
-        $quantities = $this->session->get('cart_quantities');
-        $total = $this->getCartTotal($products, $quantities);
+        $this->session->remove('cart_products');
+        $this->session->remove('cart_quantities');
 
-        return $this->render('cart/checkout.success.html.twig', [
-            'products' => $products,
-            'quantities' => $quantities,
-            'total' => $total,
-        ]);
+        return $this->render('cart/checkout_success.html.twig');
     }
 }
